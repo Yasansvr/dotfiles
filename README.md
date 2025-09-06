@@ -1,2 +1,3 @@
 # dotfiles
 My Hypreland Archlinux .dotfiles 
+For using each config T check the README.md files...
