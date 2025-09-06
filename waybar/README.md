@@ -20,7 +20,7 @@ cp -r waybar/* ~/.config/waybar/
 Option 2 — Use symlinks (recommended):
 
 ```
-ln -s ~/.dotfiles/waybar/config.jsonc ~/.config/waybar/config.jsonc
+ln -s ~/.dotfiles/waybar/config ~/.config/waybar/config
 ln -s ~/.dotfiles/waybar/style.css ~/.config/waybar/style.css
 ```
 Restart waybar:
