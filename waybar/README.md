@@ -30,7 +30,7 @@ pkill waybar && waybar &
 This way, changes to your dotfiles repo automatically apply to your system.
 
 🖼 Screenshot
-![Waybar Screenshot](waybar/waybar.png)
+![Waybar Screenshot](waybar.png)
 
 
 🔧 Requirements
