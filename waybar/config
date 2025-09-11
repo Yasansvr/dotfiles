@@ -7,12 +7,12 @@
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
+        "hyprland/mode",
+        "hyprland/scratchpad",
         "custom/media",
         "clock",
-        "keyboard-state"
+        "keyboard-state",
+        "hyprland/workspaces"
     ],
     
     "modules-center": [
@@ -30,27 +30,27 @@
         "memory",
         "temperature",
         "backlight",
-        "sway/language",
+        "hyprland/language",
         "battery#bat2",
         "tray"
     ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+     // Modules configuration
+    "hyprland/workspaces": {
+         "disable-scroll": false,
+         "all-outputs": false,
+         "warp-on-scroll": false,
+         "format": " {name}: {icon} ",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "󰲤",
+             "4": "",
+             "5": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
 
     "keyboard-state": {
         "numlock": true,
@@ -61,10 +61,11 @@
             "unlocked": ""
         }
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">{sleep}</span>"
     },
-    "sway/scratchpad": {
+
+    "hyprland/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
@@ -212,14 +213,7 @@
     },
     "custom/power": {
         "format" : "⏻",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+		"tooltip": true,
+		"on-click": "exec wlogout"
     }
 }
