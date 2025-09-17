@@ -34,6 +34,9 @@ This way, changes to your dotfiles repo automatically apply to your system.
 
 
 🔧 Requirements
-Waybar
 
-A compositor (e.g. Hyprland or Sway)
+Waybar
+wlogout
+vlc 
+
+A compositor (e.g. Hyprland)

@@ -69,16 +69,17 @@ button:hover {
     background: rgba(0, 0, 0, 0.479);
 }
 
-#workspaces button.focused {
+#workspaces button.focused{
     background-color: #64727D;
 
 }
 
-#workspaces button.urgent {
-    background-color: #eb4d4b;
+#workspaces button.urgent{
+    background-color: #00ffb3;
+    color: rgb(0, 0, 0);
 }
 
-#mode {
+#submap {
     background-color: #64727D;
     box-shadow: inset 0 -3px #ff0000;
 }
@@ -95,7 +96,7 @@ button:hover {
 #wireplumber,
 #custom-media,
 #tray,
-#mode,
+#submap,
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
@@ -140,8 +141,8 @@ button:hover {
     padding: 0 7px;
     margin-left: 4px;
     border-radius: 15px 0 0 15px;  /* only top-right rounded */
-    box-shadow: -1 -1px 1px  #00ffb3,
-                -1  1px 1px  #00ffb3;
+    box-shadow: -1px -1px 1px  #00ffb3,
+                -1px  1px 1px  #00ffb3;
 }
 
 #battery.full, #battery.charging {
@@ -221,9 +222,8 @@ label:focus {
     padding: 0px 6px;
     margin-right: 4px;
     border-radius: 0 15px 15px 0;  /* only top-right rounded */
-    box-shadow: 1 -1px 1px  #00ffb3,
-                1  1px 1px  #00ffb3;
-
+    box-shadow: 1px -1px 1px  #00ffb3,
+                1px  1px 1px  #00ffb3;
 }
 
 #network.disconnected {
@@ -252,17 +252,21 @@ label:focus {
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
+    background-color: #000000;
+    color: #00ffea;
     min-width: 100px;
+    margin-right: 4px;
+    margin-left: 4px;
+    border-radius: 20px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+    background-color: #000000;
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
+    background-color: #000000;
+    color: orange;
 }
 
 #temperature {
@@ -302,7 +306,10 @@ label:focus {
 
 #mpd {
     background-color: #66cc99;
-    color: #2a5c45;
+    color: #00f7ff;
+    border-radius: 20px;
+    margin: 0 5px;
+    padding: 0 25px;
 }
 
 #mpd.disconnected {
@@ -310,11 +317,11 @@ label:focus {
 }
 
 #mpd.stopped {
-    background-color: #90b1b1;
+    background-color: #000000;
 }
 
 #mpd.paused {
-    background-color: #51a37a;
+    background-color: #000000;
 }
 
 #language {
@@ -378,4 +385,38 @@ label:focus {
 
 #custom-power:hover {
     color: #ff0000;
+}
+
+#custom-newsin {
+    background-color: #000000;
+    color:rgb(145, 255, 0);
+    border-radius: 20px;
+    margin: 3px;
+}
+
+#custom-newsin:hover{
+    box-shadow:0 0 2px 2px#2bff00;
+}
+
+#custom-next{
+    background-color:black ;
+    color: #00ffb3;
+    border-radius: 20px;
+    padding: 0 10px;
+    font-size: 15px;
+    margin:3px 15px 3px 2px ;
+}
+
+#custom-previous{
+    background-color:black ;
+    color: #00ffb3;
+    border-radius: 20px;
+    padding: 0 10px;
+    font-size: 15px;
+    margin:3px 3px 3px 3px ;
+}
+
+#custom-next:hover , #custom-previous:hover{
+    box-shadow: 0 0 2px 2px #00b7ff;
+
 }

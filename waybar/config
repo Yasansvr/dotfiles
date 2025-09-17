@@ -2,14 +2,13 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top",//Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 41, // Waybar height (to be removed for auto height)
     "width": 1920, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/mode",
-        "hyprland/scratchpad",
-        "custom/media",
+        "hyprland/submap",
+        "custom/scratchpad",
         "clock",
         "keyboard-state",
         "hyprland/workspaces"
@@ -23,7 +22,9 @@
         
     ],
     "modules-right": [
-        "mpd",
+        "custom/previous",
+        "custom/media",
+        "custom/next",
         "idle_inhibitor",
         "pulseaudio",
         "cpu",
@@ -31,7 +32,6 @@
         "temperature",
         "backlight",
         "hyprland/language",
-        "battery#bat2",
         "tray"
     ],
      // Modules configuration
@@ -39,7 +39,7 @@
          "disable-scroll": false,
          "all-outputs": false,
          "warp-on-scroll": false,
-         "format": " {name}: {icon} ",
+         "format": " {name} {icon} ",
          "format-icons": {
              "1": "",
              "2": "",
@@ -65,7 +65,7 @@
         "format": "<span style=\"italic\">{sleep}</span>"
     },
 
-    "hyprland/scratchpad": {
+    "custom/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
         "format-icons": ["", ""],
@@ -73,9 +73,11 @@
         "tooltip-format": "{app}: {title}"
     },
     "mpd": {
+        "server": "127.0.0.1",
+        "port": 6600,
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon} Stopped ",
         "unknown-tag": "N/A",
         "interval": 5,
         "consume-icons": {
@@ -114,7 +116,7 @@
         }
     },
     "clock": {
-        "timezone": "Italy/Torino",
+        //"timezone": "Italy/Rome",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -141,7 +143,7 @@
     "battery": {
         "states": {
             "good": 95,
-            "warning":40,
+            "warning":50,
             "critical": 15
         },
         "format": "{capacity}% {icon} ",
@@ -155,8 +157,8 @@
         "format-icons": ["", "", "", "", ""]
     },
 
-    "battery#bat2": {
-        "bat": "BAT2"
+    "battery#bat0": {
+        "bat": "bat0"
     },
 
     "power-profiles-daemon": {
@@ -199,21 +201,37 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
-    "custom/power": {
-        "format" : "⏻",
-		"tooltip": true,
-		"on-click": "exec wlogout"
-    }
+
+
+"custom/power": {
+    "format" : "⏻",
+	"tooltip": true,
+	"on-click": "exec wlogout"
+},
+"custom/next": {
+    "on-click" : "exec ~/.config/waybar/next.sh",
+    "format" : " 󰒭 "
+},
+"custom/previous": {
+    "on-click" : "exec ~/.config/waybar/previous.sh",
+    "format" : " 󰒮 "
+},
+
+"custom/media": {
+  "exec": "~/.config/waybar/mediaplayer.sh",   // your script prints JSON { "text": ..., "icon": ... }
+  "interval": 2,
+  "return-type" :"json",
+  "format": "{icon}   {text}",
+    "on-click" : "exec playerctl -a play-pause",
+  // HERE you define names and what they look like
+  "format-icons": {
+    "spotify": "",   // if icon = "spotify" → show the Spotify logo
+    "play":    "",   // if icon = "play"    → show play icon
+    "pause":   "",   // if icon = "pause"   → show pause icon
+    "none":    ""    // fallback if nothing is playing
+  },
+  "escape": true,
+  "max-length": 25
+}
+
 }
